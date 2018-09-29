@@ -1,11 +1,14 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const path = require('path');
-const port = process.env.PORT || 3001;
-const team = 0//include routes when created;
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const path = require("path");
 
+const players = require('./routes/api/player');
+
+//const routes = require("./routes");
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 
 //Bodyparser Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +23,7 @@ mongoose
     .catch(err => console.log(err));
 
 //Use Routes
-app.use('/api/team', team);
+app.use('/api/players', players);
 
 //Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
@@ -34,4 +37,4 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

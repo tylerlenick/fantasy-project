@@ -5,9 +5,6 @@ exports.signup = function(req, res) {
 };
 
 exports.signin = function(req, res) {
-  var hbsObject = {
-    message: "This is error message"
-  };
   res.render("index", hbsObject);
 };
 
