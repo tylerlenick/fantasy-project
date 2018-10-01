@@ -1,26 +1,36 @@
 const express = require('express');
 const router = express.Router();
 
-//Player Model
+// Player Model
 const Player = require('../../models/Player');
 
-// @Route GET api/players
-// @desc Get all players for a user
+// @route   GET api/items
+// @desc    Get All Items
+// @access  Public
 router.get('/', (req, res) => {
-    //const currentUser = req.user;
-    Player.find()
-        .sort({ name: -1 })
-        .then(players => res.json(players))
+  Player.find()
+    .sort({ date: -1 })
+    .then(players => res.json(players));
 });
 
-// @Route POST api/players
-// @desc Post new players related to current user
+// @route   POST api/items
+// @desc    Create An Item
+// @access  Public
 router.post('/', (req, res) => {
-    const newPlayer = new Player({
-        name: req.body.name
-    });
+  const newPlayer = new Player({
+    name: req.body.name
+  });
 
-    newPlayer.save().then(player => res.json(player));
+  newPlayer.save().then(player => res.json(player));
+});
+
+// @route   DELETE api/items/:id
+// @desc    Delete A Item
+// @access  Public
+router.delete('/:id', (req, res) => {
+  Item.findById(req.params.id)
+    .then(item => item.remove().then(() => res.json({ success: true })))
+    .catch(err => res.status(404).json({ success: false }));
 });
 
 module.exports = router;
