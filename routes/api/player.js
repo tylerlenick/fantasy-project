@@ -1,28 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const playerController = require("../../controllers/playerController");
 
 // Player Model
-const Player = require('../../models/Player');
+//const Player = require('../../models/Player');
 
 // @route   GET api/items
 // @desc    Get All Items
 // @access  Public
-router.get('/', (req, res) => {
-  Player.find()
-    .sort({ date: -1 })
-    .then(players => res.json(players));
-});
+router.route("/")
+  .get(playerController.findAll)
+  .post(playerController.create);
 
-// @route   POST api/items
-// @desc    Create An Item
-// @access  Public
-router.post('/', (req, res) => {
-  const newPlayer = new Player({
-    name: req.body.name
-  });
 
-  newPlayer.save().then(player => res.json(player));
-});
 
 // @route   DELETE api/items/:id
 // @desc    Delete A Item

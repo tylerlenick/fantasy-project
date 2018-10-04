@@ -7,6 +7,7 @@
     "babel-cli": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "mongodb": "^3.1.6",
@@ -25,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",

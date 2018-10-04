@@ -2,28 +2,26 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-
-const players = require('./routes/api/player');
+const routes = require("./routes");
+//const players = require('./routes/api/player');
 
 //const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 
 //Bodyparser Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json);
 
-const db = require('./config/keys').mongoURI;
+//const db = require('./config/keys').mongoURI;
 
 //Mongoose Connection
-mongoose
-    .connect(db)
-    .then(() => console.log("MongoDB connected...."))
-    .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fantasy-scrape");
+  
 
 //Use Routes
-app.use('/api/players', players);
+app.use(routes);
 
 //Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
