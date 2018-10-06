@@ -1,16 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Create Schema
-const PlayerSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
+const playerSchema = new Schema({
+  name: { type: String, required: true },
+  date: { type: Date, default: Date.now }
 });
 
-module.exports = Player = mongoose.model('player', PlayerSchema);
+const Player = mongoose.model("Player", playerSchema);
+
+module.exports = Player;

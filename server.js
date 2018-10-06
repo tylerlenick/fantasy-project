@@ -1,38 +1,29 @@
 const express = require("express");
+//const expressValiator = require("express-validator");
+//const flash = require ("connect-flash");
 const bodyParser = require("body-parser");
+//const mongo = require("mongodb");
 const mongoose = require("mongoose");
-const path = require("path");
+//mongoose.connect('mongodb://localhost/fantasy-scrape');
+//var db = mongoose.connect;
 const routes = require("./routes");
-//const players = require('./routes/api/player');
-
-//const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
-//Bodyparser Middleware
+// Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json);
-
-//const db = require('./config/keys').mongoURI;
-
-//Mongoose Connection
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fantasy-scrape");
-  
-
-//Use Routes
+app.use(bodyParser.json());
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Add routes, both API and view
 app.use(routes);
 
-//Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-    //set static folder
-    app.use(express.static('client/build'));
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fantasy-scrape");
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
-
-
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+// Start the API server
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
