@@ -12,6 +12,9 @@
 # keys
 /config
 
+# api requests
+/client/src/utils
+
 # misc
 .DS_Store
 .env.local
