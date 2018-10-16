@@ -9,7 +9,17 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const models = require("./models");
 
+const passport = require("passport");
+const session = require("express-session");
+
+//Passport setup
+//app.use(session({ secret: /*secret*/, resave: true, saveUninitialized: true}));
+/*app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport.js')(passport, models.User);
+*/
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

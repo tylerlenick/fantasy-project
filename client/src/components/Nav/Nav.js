@@ -1,11 +1,25 @@
 import React from "react";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
+import SignupModal from "../SignupModal";
+import LoginModal from "../LoginModal";
 
-const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div className="navbar-brand">
-      Fantasy Scraper
-    </div>
-  </nav>
+const NavTop = props => (
+  <Navbar>
+    <Navbar.Header>
+      <div className="navbar-brand">
+        Fantasy Scraper
+      </div>
+    </Navbar.Header>
+    <Nav pullRight>
+      <NavItem eventKey={1}>
+        Sign Up
+      </NavItem>
+      <NavItem eventKey={2}>
+        Login
+      </NavItem>
+    </Nav>
+
+  </Navbar>
 );
 
-export default Nav;
+export default NavTop;

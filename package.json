@@ -24,8 +24,11 @@
     "body-parser": "^1.17.2",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.4",
+    "express-session": "^1.15.6",
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
-    "mysportsfeeds-node": "^2.0.1"
+    "mysportsfeeds-node": "^2.0.1",
+    "passport": "^0.4.0",
+    "passport-local-mongoose": "^5.0.1"
   }
 }

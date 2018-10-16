@@ -1,23 +1,9 @@
-var exports = (module.exports = {});
+const db = require("../models");
+const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectID;
 
-exports.signup = function(req, res) {
-  res.render("signup");
-};
-
-exports.signin = function(req, res) {
-  res.render("index", hbsObject);
-};
-
-exports.dashboard = function(req, res) {
-  res.render("dashboard");
-};
-
-exports.logout = function(req, res) {
-  req.session.destroy(function(err) {
-    if (err) {
-      throw err;
-    }
-    res.redirect("/");
-  });
-  console.log("User signed out.");
-};
+module.exports = {
+  findUser: function(req, res) {
+    const userId = req.params.id
+  }
+}

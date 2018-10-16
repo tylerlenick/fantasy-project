@@ -1,9 +1,10 @@
 import React from 'react';
 import { Nav, Button, Panel } from 'react-bootstrap';
 import "./TeamBar.css";
+import PlayerCard from '../PlayerCard';
+//import { Module } from 'module';
 
-export default class TeamBar extends React.Component {
-  render() {
+const TeamBar = props => {
     return (
       <div className="TeamBar">
         <hr />
@@ -18,24 +19,14 @@ export default class TeamBar extends React.Component {
             />
             <Button bsStyle="primary">Add</Button>
         </form> <br/>
-        <Panel>
-            <Panel.Body>Basic panel example</Panel.Body>
-        </Panel>
-        <Panel>
-            <Panel.Body>Basic panel example</Panel.Body>
-        </Panel>
-        <Panel>
-            <Panel.Body>Basic panel example</Panel.Body>
-        </Panel>
-        <Panel>
-            <Panel.Body>Basic panel example</Panel.Body>
-        </Panel>
-        <Panel>
-            <Panel.Body>Basic panel example</Panel.Body>
-        </Panel>
+            <PlayerCard 
+                players={props.players}
+            />
         </Nav>
       </div>
     );
-  }
-}
+};
+
+export default TeamBar;
+
 

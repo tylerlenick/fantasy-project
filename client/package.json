@@ -16,6 +16,7 @@
     "mysportsfeeds-node": "^2.0.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
     "popper.js": "^1.14.4",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
@@ -36,5 +37,6 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "proxy": "http://localhost:3001/"
 }
