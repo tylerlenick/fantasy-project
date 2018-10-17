@@ -10,7 +10,6 @@ const PlayerCard = props => {
                           <Panel>
                             <Panel.Body>{player.name}</Panel.Body>
                           </Panel>
-                        <br/>
                     </div>
                 )
             })}

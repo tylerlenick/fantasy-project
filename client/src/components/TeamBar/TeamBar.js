@@ -1,24 +1,23 @@
 import React from 'react';
-import { Nav, Button, Panel } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import "./TeamBar.css";
 import PlayerCard from '../PlayerCard';
-//import { Module } from 'module';
+import SearchFrom from '../SearchForm';
+import API from "../../utils/API";
 
 const TeamBar = props => {
+
+
     return (
       <div className="TeamBar">
         <hr />
         <p>My Team</p>
         <Nav vertical>
-        <form>
-            <input
-            id="formControlsText"
-            type="text"
-            label="Text"
-            placeholder="Enter text"
+         <br/>
+            <SearchFrom
+                handleInputChange={props.handleInputChange}
+                handleFormSubmit={props.handleFormSubmit}
             />
-            <Button bsStyle="primary">Add</Button>
-        </form> <br/>
             <PlayerCard 
                 players={props.players}
             />

@@ -4,6 +4,7 @@ import '../../App.css';
 import Nav from '../../components/Nav';
 import TeamBar from '../../components/TeamBar';
 import SourceTab from '../../components/SourceTab';
+import SearchForm from '../../components/SearchForm';
 import ArticleCard from '../../components/ArticleCard';
 import { Grid, Col, Row } from "react-bootstrap";
 import API from "../../utils/API";
@@ -17,15 +18,35 @@ import API from "../../utils/API";
       
         componentWillMount() {
 
-            API.getFantasyPros()
+            API.getFantasyPros(this.state.players)
             .then(articles => {
                 this.setState({
-                articles: articles.data
+                    articles: articles.data
                 })
                 console.log(this.state.articles);
             })
 
+            API.getPlayers()
+            .then(players => {
+                this.setState({
+                    players: players.data
+                })
+            })
+
         };
+
+        handleFormSubmit = event => {
+            event.preventDefault();
+            this.searchPlayer();
+          };
+
+        handleInputChange = event => {
+            const { name, value } = event.target;
+            this.setState({
+                [name]: value
+            });
+        };
+
       
         /*articleScraper = () => {
           console.log("Article scraper")
@@ -61,8 +82,9 @@ import API from "../../utils/API";
                     <Row>
                         <Col xs={6} md={4} >
                         <TeamBar 
-                            players={this.state.players}
+                            players={this.state.players}  
                         />
+
                         </Col>
 
                         <Col xs={12} md={8} >

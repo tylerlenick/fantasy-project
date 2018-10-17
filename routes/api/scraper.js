@@ -4,37 +4,31 @@ const axios = require("axios");
 const db = require("../../models");
 
 router.get("/", (req, res) => {
-    
-    axios.get("https://www.fantasypros.com/nfl/player-news.php").then(function(response) {
+    const playerArr = req.params.players
 
-        const $ = cheerio.load(response.data);
-        const articleArr = []; 
-        $(".player-news-header").each(function(i, element) {
+    for (let i = 0; i < playerArr.length; i++) {
 
-            var result = {};
+        const player = playerArr[i].replace(" ", "-");
 
-            result.title = $(this).first("a").text();
-            //result.link = "test";
+        axios.get("https://www.fantasypros.com/nfl/news/" + player + ".php").then(function(response) {
 
-            // Create a new Article using the `result` object built from scraping
-            /*db.Article.create(result)
-            .then(function(dbArticle) {
-                // View the added result in the console
-                console.log(dbArticle);
-            })
-            .catch(function(err) {
-                // If an error occurred, send it to the client
-                console.log(err);
-            });*/
+            const $ = cheerio.load(response.data);
+            const articleArr = []; 
+            $(".player-news-header").each(function(i, element) {
 
-            articleArr.push(result);
+                var result = {};
 
+                result.title = $(this).first("a").text();
+
+                articleArr.push(result);
+
+            });
+
+            res.json(articleArr);
+
+            res.send("scrape complete");
         });
-
-        res.json(articleArr);
-
-        res.send("scrape complete");
-    });
+    }
 });
 
 module.exports = router;
