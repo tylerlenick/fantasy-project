@@ -3,14 +3,16 @@ const cheerio = require("cheerio");
 const axios = require("axios");
 const db = require("../../models");
 
-router.get("/", (req, res) => {
-    const playerArr = req.params.players
+router.get("/:players", (req, res) => {
+    //const playerArr = req.params.map(player => player.name);
+    const playerArr = JSON.stringify(req.params.players);
+    console.log(playerArr);
+    
+    //for (let i = 0; i < playerArr.length; i++) {
 
-    for (let i = 0; i < playerArr.length; i++) {
-
-        const player = playerArr[i].replace(" ", "-");
-
-        axios.get("https://www.fantasypros.com/nfl/news/" + player + ".php").then(function(response) {
+        //const player = playerArr[i].replace(" ", "-");
+        //console.log(player);
+        axios.get("https://www.fantasypros.com/nfl/player-news.php").then(function(response) {
 
             const $ = cheerio.load(response.data);
             const articleArr = []; 
@@ -26,9 +28,9 @@ router.get("/", (req, res) => {
 
             res.json(articleArr);
 
-            res.send("scrape complete");
+            //res.send("scrape complete");
         });
-    }
+    //}*/
 });
 
 module.exports = router;

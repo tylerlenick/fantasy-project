@@ -8,6 +8,7 @@ import SearchForm from '../../components/SearchForm';
 import ArticleCard from '../../components/ArticleCard';
 import { Grid, Col, Row } from "react-bootstrap";
 import API from "../../utils/API";
+import { isThisSecond } from 'date-fns';
 
 
     class Main extends Component {
@@ -18,21 +19,22 @@ import API from "../../utils/API";
       
         componentWillMount() {
 
-            API.getFantasyPros(this.state.players)
-            .then(articles => {
-                this.setState({
-                    articles: articles.data
-                })
-                console.log(this.state.articles);
-            })
-
             API.getPlayers()
             .then(players => {
                 this.setState({
                     players: players.data
                 })
+                API.getFantasyPros(this.state.players)
+                .then(articles => {
+                this.setState({
+                    articles: articles.data
+                })
+                //console.log(this.state.articles);
+                console.log(this.state.players);
+            })      
             })
 
+        
         };
 
         handleFormSubmit = event => {
