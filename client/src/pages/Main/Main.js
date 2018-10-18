@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import '../../App.css';
 import Nav from '../../components/Nav';
 import TeamBar from '../../components/TeamBar';
@@ -8,15 +7,16 @@ import SearchForm from '../../components/SearchForm';
 import ArticleCard from '../../components/ArticleCard';
 import { Grid, Col, Row } from "react-bootstrap";
 import API from "../../utils/API";
-import { isThisSecond } from 'date-fns';
+
 
 
     class Main extends Component {
         state = {
           articles: [],
-          players: []
+          players: [],
+          searchPlayer: ""
         }
-      
+        
         componentWillMount() {
 
             API.getPlayers()
@@ -39,14 +39,29 @@ import { isThisSecond } from 'date-fns';
 
         handleFormSubmit = event => {
             event.preventDefault();
-            this.searchPlayer();
-          };
+        
+            API.savePlayer({
+                name: this.state.searchPlayer,
+            })
+            .then(res => API.getPlayers())
+                .then(players => {
+                    this.setState({
+                        players: players.data
+                    })
+                }).catch(err => console.log(err));
+        };
 
         handleInputChange = event => {
             const { name, value } = event.target;
             this.setState({
                 [name]: value
             });
+        };
+
+        handleDelete = id => {
+            API.deletePlayer(id)
+            .then(res => this.getPlayers())
+            .catch(err => console.log(err));
         };
 
       
@@ -84,7 +99,10 @@ import { isThisSecond } from 'date-fns';
                     <Row>
                         <Col xs={6} md={4} >
                         <TeamBar 
-                            players={this.state.players}  
+                            players={this.state.players} 
+                            handleInputChange={this.handleInputChange}
+                            handleFormSubmit={this.handleFormSubmit} 
+                            handleDelete={this.handleDelete}
                         />
 
                         </Col>

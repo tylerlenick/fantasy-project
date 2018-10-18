@@ -2,8 +2,8 @@ import React from 'react';
 import { Nav } from 'react-bootstrap';
 import "./TeamBar.css";
 import PlayerCard from '../PlayerCard';
-import SearchFrom from '../SearchForm';
-import API from "../../utils/API";
+import SearchForm from '../SearchForm';
+
 
 const TeamBar = props => {
 
@@ -14,7 +14,7 @@ const TeamBar = props => {
         <p>My Team</p>
         <Nav vertical>
          <br/>
-            <SearchFrom
+            <SearchForm
                 handleInputChange={props.handleInputChange}
                 handleFormSubmit={props.handleFormSubmit}
             />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
+import DeleteBtn from '../DeleteBtn';
 
 const PlayerCard = props => {
     return(
@@ -8,7 +9,11 @@ const PlayerCard = props => {
                 return(
                     <div>
                           <Panel>
-                            <Panel.Body>{player.name}</Panel.Body>
+                            <Panel.Body>{player.name} 
+                            <DeleteBtn 
+                            onClick = {props.handleDelete}
+                            /></Panel.Body>
+                            
                           </Panel>
                     </div>
                 )

@@ -1,36 +1,33 @@
 const router = require("express").Router();
 const cheerio = require("cheerio");
 const axios = require("axios");
-const db = require("../../models");
+//const db = require("../../models");
 
-router.get("/:players", (req, res) => {
-    //const playerArr = req.params.map(player => player.name);
-    const playerArr = JSON.stringify(req.params.players);
-    console.log(playerArr);
-    
-    //for (let i = 0; i < playerArr.length; i++) {
+router.post("/", (req, res) => {
+    const playerArr = req.body
+    let articleArr = [];
 
-        //const player = playerArr[i].replace(" ", "-");
-        //console.log(player);
-        axios.get("https://www.fantasypros.com/nfl/player-news.php").then(function(response) {
+    for (let i = 0; i < playerArr.length; i++) { 
 
-            const $ = cheerio.load(response.data);
-            const articleArr = []; 
-            $(".player-news-header").each(function(i, element) {
+        const result = {};
+        const player = playerArr[i].name.replace(" ", "-").toLowerCase();
+            axios.get("https://www.fantasypros.com/nfl/news/" + player + ".php").then(function(response) {
 
-                var result = {};
+                const $ = cheerio.load(response.data);
+                 
+                $(".content").each(function() {
 
-                result.title = $(this).first("a").text();
+                    result.title = $(this).first("a").text();
+                    articleArr.push(response);
+                    
+                    //console.log(articleArr);
+                    //res.json(result);
 
-                articleArr.push(result);
-
-            });
-
-            res.json(articleArr);
-
-            //res.send("scrape complete");
-        });
-    //}*/
-});
+                })
+            })
+        //res.json(result);
+    }
+    //console.log(articleArr);
+})
 
 module.exports = router;

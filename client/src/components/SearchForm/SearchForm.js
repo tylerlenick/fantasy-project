@@ -5,6 +5,7 @@ const SearchForm = props => {
     return(
         <form>
             <input
+            name="searchPlayer"
             id="formControlsText"
             type="text"
             label="Text"
