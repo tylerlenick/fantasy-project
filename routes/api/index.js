@@ -10,7 +10,7 @@ router.use("/players", playerRoutes);
 router.use("/scraper", scraperRoutes);
 
 // Auth Routes
-router.use("/auth", authRoutes);
+//router.use("/auth", authRoutes);
 
 
 module.exports = router;
