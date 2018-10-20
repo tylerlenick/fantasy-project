@@ -1,4 +1,4 @@
-const User = require("../../models").User;
+/*const User = require("../../models").User;
 module.exports = function (passport) {
 	const path = require("path");
 	const router = require('express').Router();
@@ -48,4 +48,4 @@ module.exports = function (passport) {
 	});
 
 	return router;
-};
+};*/
