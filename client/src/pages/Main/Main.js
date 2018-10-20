@@ -5,7 +5,7 @@ import TeamBar from '../../components/TeamBar';
 import SourceTab from '../../components/SourceTab';
 import SearchForm from '../../components/SearchForm';
 import ArticleCard from '../../components/ArticleCard';
-import { Grid, Col, Row, Modal, Button } from "react-bootstrap";
+import { Grid, Col, Row, Modal, Button, FormGroup, ControlLabel, FormControl, HelpBlock } from "react-bootstrap";
 import API from "../../utils/API";
 
 
@@ -141,59 +141,35 @@ import API from "../../utils/API";
                 <container>
                      <Modal show={this.state.show} onHide={this.handleClose}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Modal heading</Modal.Title>
+                            <Modal.Title>Login</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-         
+                        <form>
+                            <FormGroup>
+                            <ControlLabel>Username</ControlLabel>
+                            <FormControl
+                                type="text"
+                                value={this.state.value}
+                                placeholder="Enter Usernam"
+                                onChange={this.handleChange}
+                            />
+                            <FormControl.Feedback />
+                            <br/>
+                            <ControlLabel>Password</ControlLabel>
+                            <FormControl
+                                type="text"
+                                value={this.state.value}
+                                placeholder="Enter Password"
+                                onChange={this.handleChange}
+                            />
+                            <FormControl.Feedback />
+                            </FormGroup>
+                        </form>
 
-                        <h4>Overflowing text to show scroll behavior</h4>
-                        <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-                        ac consectetur ac, vestibulum at eros.
-                        </p>
-                        <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur
-                        et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-                        auctor.
-                        </p>
-                        <p>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-                        cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-                        dui. Donec ullamcorper nulla non metus auctor fringilla.
-                        </p>
-                        <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-                        ac consectetur ac, vestibulum at eros.
-                        </p>
-                        <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur
-                        et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-                        auctor.
-                        </p>
-                        <p>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-                        cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-                        dui. Donec ullamcorper nulla non metus auctor fringilla.
-                        </p>
-                        <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-                        ac consectetur ac, vestibulum at eros.
-                        </p>
-                        <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur
-                        et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-                        auctor.
-                        </p>
-                        <p>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-                        cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-                        dui. Donec ullamcorper nulla non metus auctor fringilla.
-                        </p>
+                        
                         </Modal.Body>
                         <Modal.Footer>
+                            <Button bsStyle="primary" onClick={this.handleClose}>Login</Button>
                             <Button onClick={this.handleClose}>Close</Button>
                         </Modal.Footer>
                     </Modal>

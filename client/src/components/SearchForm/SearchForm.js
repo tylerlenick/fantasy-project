@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, FormControl, Form, FormGroup } from 'react-bootstrap';
 
 const SearchForm = props => {
     return(
-        <form>
-            <input
+        <Form inLine>
+          <FormGroup>
+            <FormControl
             name="searchPlayer"
             id="formControlsText"
             type="text"
@@ -12,9 +13,11 @@ const SearchForm = props => {
             placeholder="Enter Player"
             onChange={props.handleInputChange}
             />
+          </FormGroup>
             <Button bsStyle="primary" onClick={props.handleFormSubmit}>Add</Button>
-        </form>
+        </Form>
     )
 }
 
 export default SearchForm;
+

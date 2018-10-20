@@ -14,10 +14,12 @@ const TeamBar = props => {
         <p>My Team</p>
         <Nav vertical>
          <br/>
+            
             <SearchForm
                 handleInputChange={props.handleInputChange}
                 handleFormSubmit={props.handleFormSubmit}
             />
+
             <PlayerCard 
                 players={props.players}
                 handleDelete={props.handleDelete}
