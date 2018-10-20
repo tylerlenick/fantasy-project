@@ -150,7 +150,7 @@ import API from "../../utils/API";
                             <FormControl
                                 type="text"
                                 value={this.state.value}
-                                placeholder="Enter Usernam"
+                                placeholder="Enter Username"
                                 onChange={this.handleChange}
                             />
                             <FormControl.Feedback />
