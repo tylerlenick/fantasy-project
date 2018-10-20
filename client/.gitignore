@@ -9,8 +9,6 @@
 # keys
 /config
 
-# api requests
-/src/utils
 
 # misc
 .DS_Store
