@@ -20,6 +20,8 @@ const TeamBar = props => {
             />
             <PlayerCard 
                 players={props.players}
+                handleDelete={props.handleDelete}
+                searchPlayerArticle={props.searchPlayerArticle}
             />
         </Nav>
       </div>

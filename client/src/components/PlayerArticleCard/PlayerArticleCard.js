@@ -1,10 +1,10 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
 
-const ArticleCard = props => {
+const PlayerArticleCard = props => {
     return(
         <div>
-            {props.articles.map(article => {
+            {props.playerArticles.map(article => {
                 return(
                     <div>
                         <Panel>
@@ -22,4 +22,4 @@ const ArticleCard = props => {
     )
 }
 
-export default ArticleCard;
+export default PlayerArticleCard;

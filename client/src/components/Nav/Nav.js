@@ -14,7 +14,7 @@ const NavTop = props => (
       <NavItem eventKey={1}>
         Sign Up
       </NavItem>
-      <NavItem eventKey={2}>
+      <NavItem eventKey={2} onClick={() => {props.handleShow()}}>
         Login
       </NavItem>
     </Nav>

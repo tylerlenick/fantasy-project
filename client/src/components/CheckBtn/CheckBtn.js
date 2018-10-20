@@ -1,13 +1,12 @@
 import React from "react";
-import "./DeleteBtn.css";
-import PlayerCard from "../PlayerCard";
+import "./CheckBtn.css";
 
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
-const DeleteBtn = props => (
-  <button className="delete-btn" {...props}>
-    X
+const CheckBtn = props => (
+  <button className="check-btn" {...props}>
+    O
   </button>
 );
 
-export default DeleteBtn;
+export default CheckBtn;
