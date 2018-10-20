@@ -157,7 +157,7 @@ import API from "../../utils/API";
                             <br/>
                             <ControlLabel>Password</ControlLabel>
                             <FormControl
-                                type="text"
+                                type="password"
                                 value={this.state.value}
                                 placeholder="Enter Password"
                                 onChange={this.handleChange}
