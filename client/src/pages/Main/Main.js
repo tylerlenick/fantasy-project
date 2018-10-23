@@ -3,8 +3,6 @@ import '../../App.css';
 import Nav from '../../components/Nav';
 import TeamBar from '../../components/TeamBar';
 import SourceTab from '../../components/SourceTab';
-import SearchForm from '../../components/SearchForm';
-import ArticleCard from '../../components/ArticleCard';
 import { Grid, Col, Row, Modal, Button, FormGroup, ControlLabel, FormControl, HelpBlock } from "react-bootstrap";
 import API from "../../utils/API";
 
@@ -41,21 +39,6 @@ import API from "../../utils/API";
             
             console.log(this.state.key);
         };
-
-        /*componentDidUpdate() {
-            const player = {
-                name: this.state.currentPlayer
-            }
-            console.log(this.state.key);
-            /*if( this.state.key = 2) {
-                API.getFantasyPros(player)
-                .then(articles => {
-                    this.setState({
-                        articles: articles.data
-                    })
-                })
-            }
-         }*/
 
         getPlayerArticles = player => {
             API.getFantasyPros(player)
