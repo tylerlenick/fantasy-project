@@ -1,11 +1,12 @@
 import React from "react";
 import './Nav.css';
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+//import '../../../public/football.jpg';
 import SignupModal from "../SignupModal";
 import LoginModal from "../LoginModal";
 
 const NavTop = props => (
-  <Navbar className="navbar">
+  <Navbar className="sticky-nav" fixedTop inverse>
     <Navbar.Header>
       <div className="navbar-brand">
         Fantasy Scraper
