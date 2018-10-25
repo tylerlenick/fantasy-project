@@ -1,10 +1,11 @@
 import React from "react";
+import './Nav.css';
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import SignupModal from "../SignupModal";
 import LoginModal from "../LoginModal";
 
 const NavTop = props => (
-  <Navbar>
+  <Navbar className="navbar">
     <Navbar.Header>
       <div className="navbar-brand">
         Fantasy Scraper
