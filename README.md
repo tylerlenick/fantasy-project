@@ -1,2 +1,2 @@
-# MERNReadingList
-MERN stack application for storing and retrieving books information
+# fantasyScraper
+MERN stack application scraping relevant fantasy football information.
