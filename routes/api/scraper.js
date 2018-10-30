@@ -68,6 +68,7 @@ router.get("/", (req, res) => {
 
             result.title = $(this).children().children(".report").text();
             result.text = $(this).children().children(".impact").text();
+            result.date = $(this).children().children(".info").children(".date").text();
             articleArr.push(result);
         })
         console.log(articleArr);

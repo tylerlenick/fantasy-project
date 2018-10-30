@@ -1,9 +1,7 @@
 import React from "react";
 import './Nav.css';
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-//import '../../../public/football.jpg';
-import SignupModal from "../SignupModal";
-import LoginModal from "../LoginModal";
+
 
 const NavTop = props => (
   <Navbar className="sticky-nav" fixedTop inverse>
@@ -18,6 +16,9 @@ const NavTop = props => (
       </NavItem>
       <NavItem eventKey={2} onClick={() => {props.handleShow()}}>
         Login
+      </NavItem>
+      <NavItem eventKey={3} onClick={() => {props.handleShow()}}>
+        Log Out
       </NavItem>
     </Nav>
 

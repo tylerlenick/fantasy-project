@@ -9,7 +9,7 @@ const ArticleCard = props => {
                     <div>
                         <Panel>
                             <Panel.Heading>
-                            <Panel.Title componentClass="h3">{article.title}</Panel.Title>
+                            <Panel.Title componentClass="h3">{article.title}{'    '}{article.date}</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>{article.text}</Panel.Body>
                         </Panel>
