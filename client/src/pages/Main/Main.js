@@ -25,8 +25,6 @@ import API from "../../utils/API";
                 this.setState({
                     players: players.data
                 })
-                
-                //setTimeout(function(){console.log(Main.state.articles)}, 10000);      
             })
 
 
