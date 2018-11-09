@@ -1,24 +1,42 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 
 const LoginModal = props => {
     return(
        
-        <Modal show={props.state.show} onHide={props.handleClose}>
-            <Modal.Dialog>
-                <Modal.Header>
-                <Modal.Title>Modal title</Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>One fine body...</Modal.Body>
-
-                <Modal.Footer>
-                <Button>Close</Button>
-                <Button bsStyle="primary">Save changes</Button>
-                </Modal.Footer>
-            </Modal.Dialog>
+        <Modal show={props.loginShow} onHide={props.handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Login</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <form>
+                <FormGroup>
+                <ControlLabel>Username</ControlLabel>
+                <FormControl
+                    type="text"
+                    value={props.value}
+                    placeholder="Enter Username"
+                    onChange={props.handleChange}
+                />
+                <FormControl.Feedback />
+                <br/>
+                <ControlLabel>Password</ControlLabel>
+                <FormControl
+                    type="password"
+                    value={this.state.value}
+                    placeholder="Enter Password"
+                    onChange={this.handleChange}
+                />
+                <FormControl.Feedback />
+                </FormGroup>
+            </form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button bsStyle="primary" onClick={props.handleLogin}>Login</Button>
+                <Button onClick={props.handleClose}>Close</Button>
+            </Modal.Footer>
         </Modal>
-        
+            
     )
 }
 

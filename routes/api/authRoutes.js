@@ -1,6 +1,6 @@
-/*const User = require("../../models").User;
+const User = require("../models").User;
+
 module.exports = function (passport) {
-	const path = require("path");
 	const router = require('express').Router();
 
 	router.get("/isAuthenticated",function(req,res){
@@ -23,21 +23,20 @@ module.exports = function (passport) {
 	});
 
 	router.post("/signup",function(req,res){
-		console.log("test authroutes.js")
 		const newUser = req.body;
 		User.register(newUser, newUser.password,(err,user)=>{
-			if (err){ return res.json("authroutes error message: " + err.message); }
-			console.log("test user registered")
-			// console.log(user);
-			console.log(user.username);
-			const userInfo = req.user
-			res.json(userInfo);
+			if (err){ return res.json(err.message); }
+			// console.log(user)
+			passport.authenticate("local")(req, res, function() {
+				console.log(req.user);
+				res.json(req.user);
+			})
 		});
 	});
 
 	router.post("/login",passport.authenticate('local') ,function(req,res){
 		console.log("test log in authroute")
-		console.log(req.user);
+		// console.log(req.user);
 		const userInfo = req.user
 		res.json(userInfo);
 	});
@@ -48,4 +47,4 @@ module.exports = function (passport) {
 	});
 
 	return router;
-};*/
+};

@@ -20,6 +20,15 @@ export default {
 
   getAllArticles: function() {
     return axios.get("/api/scraper");
+  },
+
+  //Search for a user
+  getUser: function(id) {
+    return axios.get("/api/user/" + id);
+  },
+
+  createUser: function(newUser) {
+    return axios.post("/api/user", newUser);
   }
 }
 

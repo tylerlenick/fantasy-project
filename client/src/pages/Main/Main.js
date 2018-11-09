@@ -3,8 +3,11 @@ import '../../App.css';
 import Nav from '../../components/Nav';
 import TeamBar from '../../components/TeamBar';
 import SourceTab from '../../components/SourceTab';
-import { Grid, Col, Row, Modal, Button, FormGroup, ControlLabel, FormControl, HelpBlock } from "react-bootstrap";
+import LoginModal from '../../components/LoginModal';
+import SignupModal from '../../components/SignupModal';
+import { Grid, Col, Row, Modal, Button, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 import API from "../../utils/API";
+
 
 
     class Main extends Component {
@@ -15,7 +18,9 @@ import API from "../../utils/API";
           currentPlayer: "",
           searchPlayer: "",
           key: 1,
-          show: false
+          currentUser: "",
+          loginShow: false,
+          signupShow: false,
         }
         
         componentDidMount() {
@@ -45,7 +50,7 @@ import API from "../../utils/API";
                         articles: articles.data
                     })
             })
-        }
+        };
         handleFormSubmit = event => {
             event.preventDefault();
         
@@ -59,6 +64,19 @@ import API from "../../utils/API";
                     })
                 }).catch(err => console.log(err));
         };
+
+        handleSignup = event => {
+            event.preventDefault();
+
+            //POST to user table
+
+        };
+
+        handleLogin = event => {
+            event.preventDefault();
+
+            API.getUser
+        }
 
         handleInputChange = event => {
             const { name, value } = event.target;
@@ -94,11 +112,18 @@ import API from "../../utils/API";
         }
 
         handleClose = () => {
-            this.setState({ show: false });
+            this.setState({ 
+                loginShow: false,
+                signupShow: false 
+            });
         }
         
-        handleShow = () => {
-            this.setState({ show: true });
+        handleLoginShow = () => {
+            this.setState({ loginShow: true });
+        }
+
+        handleSignupShow = () => {
+            this.setState({ signupShow: true });
         }
         
         searchPlayerArticle = (player) => {
@@ -120,42 +145,19 @@ import API from "../../utils/API";
         render() {
             return(
                 <container>
-                     <Modal show={this.state.show} onHide={this.handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Login</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                        <form>
-                            <FormGroup>
-                            <ControlLabel>Username</ControlLabel>
-                            <FormControl
-                                type="text"
-                                value={this.state.value}
-                                placeholder="Enter Username"
-                                onChange={this.handleChange}
-                            />
-                            <FormControl.Feedback />
-                            <br/>
-                            <ControlLabel>Password</ControlLabel>
-                            <FormControl
-                                type="password"
-                                value={this.state.value}
-                                placeholder="Enter Password"
-                                onChange={this.handleChange}
-                            />
-                            <FormControl.Feedback />
-                            </FormGroup>
-                        </form>
-
-                        
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button bsStyle="primary" onClick={this.handleClose}>Login</Button>
-                            <Button onClick={this.handleClose}>Close</Button>
-                        </Modal.Footer>
-                    </Modal>
+                    <LoginModal
+                        loginShow={this.state.loginShow}
+                        handleClose={this.handleClose}
+                        value={this.state.value}
+                        handleChange={this.handleChange}
+                        handleLogin={this.handleLogin}
+                    />
+                    <SignupModal
+                        show={this.state.signupShow}
+                    />
                     <Nav 
-                        handleShow={this.handleShow}
+                        handleLoginShow={this.handleLoginShow}
+                        handleSignupShow={this.handleSignupShow}
                     />
                     <Grid>
                     <Row>

@@ -1,23 +1,42 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 
 const SignupModal = props => {
-    const { classes } = props
     return(
-        <div className="static-modal">
-        <Modal.Dialog>
-            <Modal.Header>
-            <Modal.Title>Modal title</Modal.Title>
+            
+        <Modal show={props.signupShow} onHide={props.handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Login</Modal.Title>
             </Modal.Header>
-
-            <Modal.Body>One fine body...</Modal.Body>
-
+            <Modal.Body>
+            <form>
+                <FormGroup>
+                <ControlLabel>Username</ControlLabel>
+                <FormControl
+                    type="text"
+                    value={props.value}
+                    placeholder="Enter Username"
+                    onChange={props.handleChange}
+                />
+                <FormControl.Feedback />
+                <br/>
+                <ControlLabel>Password</ControlLabel>
+                <FormControl
+                    type="password"
+                    value={props.value}
+                    placeholder="Enter Password"
+                    onChange={props.handleChange}
+                />
+                <FormControl.Feedback />
+                </FormGroup>
+            </form>
+            </Modal.Body>
             <Modal.Footer>
-            <Button>Close</Button>
-            <Button bsStyle="primary">Save changes</Button>
+                <Button bsStyle="primary" onClick={props.handleLogin}>Login</Button>
+                <Button onClick={props.handleClose}>Close</Button>
             </Modal.Footer>
-        </Modal.Dialog>
-        </div>
+        </Modal>
+
     )
 }
 
